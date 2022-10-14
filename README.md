@@ -1,0 +1,1 @@
+Here will be instruction how to change log destination using console args 
