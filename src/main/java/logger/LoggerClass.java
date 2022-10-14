@@ -1,5 +1,5 @@
 package logger;
 
 public interface LoggerClass {
-    void waitForInput();
+    void log(String message);
 }

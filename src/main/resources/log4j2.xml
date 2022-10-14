@@ -15,16 +15,16 @@
 
 
     <Loggers>
-        <Logger name="org.example.logger.ConsoleLogger" level="info" additivity="false">
+        <Logger name="logger.ConsoleLogger" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
 
-        <Logger name="org.example.logger.FileConsoleLogger" level="info" additivity="false">
+        <Logger name="logger.FileConsoleLogger" level="info" additivity="false">
             <AppenderRef ref="LogToFile"/>
             <AppenderRef ref="LogToConsole"/>
         </Logger>
 
-        <Logger name="org.example.logger.FileLogger" level="info" additivity="false">
+        <Logger name="logger.FileLogger" level="info" additivity="false">
             <AppenderRef ref="LogToFile"/>
         </Logger>
 
