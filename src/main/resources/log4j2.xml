@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="DEBUG">
     <Appenders>
-        <Console name="LogToConsole" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
         </Console>
 
-        <File name="LogToFile" fileName="logs/app.log">
+        <File name="file" fileName="logs/app.log">
             <PatternLayout>
-                <Pattern>%m</Pattern>
+                <Pattern>%m%n</Pattern>
             </PatternLayout>
         </File>
-
     </Appenders>
-
 
     <Loggers>
         <Logger name="logger.ConsoleLogger" level="info" additivity="false">
-            <AppenderRef ref="LogToConsole"/>
-        </Logger>
-
-        <Logger name="logger.FileConsoleLogger" level="info" additivity="false">
-            <AppenderRef ref="LogToFile"/>
-            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="console"/>
         </Logger>
 
         <Logger name="logger.FileLogger" level="info" additivity="false">
-            <AppenderRef ref="LogToFile"/>
+            <AppenderRef ref="file"/>
         </Logger>
 
     </Loggers>
