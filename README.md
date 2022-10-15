@@ -1,1 +1,4 @@
-Here will be instruction how to change log destination using console args 
+Console args usage:
+    "-c" - console log mode
+    "-f tag" - file log mode
+    "-cf tag" - both methods
