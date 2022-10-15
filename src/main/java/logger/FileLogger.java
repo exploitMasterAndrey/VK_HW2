@@ -8,9 +8,14 @@ import util.Application;
 @Singleton
 public class FileLogger implements LoggerClass{
     private final Logger fileLogger = LoggerFactory.getLogger(FileLogger.class);
+    private final String format;
+
+    public FileLogger(String format) {
+        this.format = "<" + format + ">" + "%s" + "</" + format + ">";
+    }
 
     @Override
-    public void log(String message, String format){
-        fileLogger.info(String.format(++Application.count + ". " + format, message));
+    public void log(String message){
+        fileLogger.info(String.format(++Application.count + ". " + this.format, message));
     }
 }

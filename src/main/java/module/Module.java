@@ -5,27 +5,32 @@ import logger.ConsoleLogger;
 import logger.FileConsoleLogger;
 import logger.FileLogger;
 import logger.LoggerClass;
+import org.slf4j.Logger;
 
 public class Module extends AbstractModule {
-    private String param;
+    private String[] params;
 
-    public Module(String param){
+    public Module(String[] params){
         super();
-        this.param = param;
+        this.params = params;
     }
 
     @Override
     protected void configure() {
-        switch (param){
+        switch (params[0]){
             case ("-c"):
-                bind(LoggerClass.class).to(ConsoleLogger.class);
+                bind(LoggerClass.class).toInstance(new ConsoleLogger(""));
                 break;
             case ("-f"):
-                bind(LoggerClass.class).to(FileLogger.class);
+                if (params.length != 2) throw new IllegalArgumentException("There is no additional argument :(");
+                bind(LoggerClass.class).toInstance(new FileLogger(params[1]));
                 break;
             case ("-cf"):
-                bind(LoggerClass.class).to(FileConsoleLogger.class);
+                if (params.length != 2) throw new IllegalArgumentException("There is no additional argument :(");
+                bind(LoggerClass.class).toInstance(new FileConsoleLogger(params[1]));
                 break;
+            default:
+                throw new IllegalArgumentException("No available args provided :(");
         }
     }
 }
